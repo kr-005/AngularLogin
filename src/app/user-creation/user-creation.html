@@ -1,0 +1,75 @@
+
+
+
+<div class="user-creation">
+    <h2>{{ title }}</h2>
+    <form #userCreationForm="ngForm" >
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="username">Username:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" id="username" [(ngModel)]="name" name="username" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                   <label for="email">Email:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" id="email" [(ngModel)]="email" name="email" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="Mobile_Number">Phone Number:</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" id="Mobile_Number" [(ngModel)]="MobileNo" name="Mobile_Number" required>
+                </div>
+            </div>
+        
+        </div>
+        <div class="container">
+            <h2>Car List</h2>
+        <table border="1" [cellPadding]="10">
+            <tr>
+                <th>Select</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Year</th>
+            </tr>
+            <tr *ngFor="let car of car">
+                <td>
+                    <input type="radio" name="selected" [(ngModel)]="selected" [value]="car.year" required>
+                </td>
+                <td>{{car.brand}}</td>
+                <td>{{car.model}}</td>
+                <td>{{car.year}}</td>
+            </tr>
+        </table>
+
+
+
+        </div>
+        
+<!-- Show selected car -->
+<div *ngIf="selected">
+  <h3>You selected: | uppercase</h3>
+  <p><strong>{{ getSelectedCars()?.brand }}</strong> - ₹{{ getSelectedCars()?.model }} ({{ getSelectedCars()?.year }})</p>
+</div>
+        <button type="submit" (click)="onSubmit()"  [disabled]="!userCreationForm.valid" >Request Registration</button>
+    </form>
+
+    <div>
+  <h2>Count: {{ APIURL.count() }}</h2>
+<h3>Double Count: {{ APIURL.doubleCount() }}</h3>
+
+<button (click)="APIURL.increment()">Increment</button>
+<button (click)="APIURL.decrement()">Decrement</button>
+<button (click)="APIURL.reset()">Reset</button>
+
+</div>
+</div>

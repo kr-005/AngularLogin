@@ -1,0 +1,43 @@
+
+<div class="login-container">
+  <h2>Welcome to Karthik WebSite</h2>
+  <!-- <form (ngSubmit)="onSubmit()" #loginForm="ngForm"> -->
+    <form #loginForm="ngForm">
+    <label>Username:</label>
+    <input type="text" name="Username" [(ngModel)]="Username" required />
+    <br />
+
+    <label>Password:</label>
+    <input type="password" name="Password" [(ngModel)]="Password" required />
+    <br />
+
+    <button type="submit" (click)="onSubmit()" [disabled]="!loginForm.valid">Login</button>
+  </form>
+<div>
+  <h2>Count: {{ APIURL.count() }}</h2>
+<h3>Double Count: {{ APIURL.doubleCount() }}</h3>
+
+<button (click)="APIURL.increment()">Increment</button>
+<button (click)="APIURL.decrement()">Decrement</button>
+<button (click)="APIURL.reset()">Reset</button>
+
+</div>
+
+<form [formGroup]="loginFormvalidation" (ngSubmit)="login()">
+  <label>Username:</label>
+  <input type="text" formControlName="Username" />
+  <div *ngIf="loginFormvalidation.get('Username')?.invalid && loginFormvalidation.get('Username')?.touched">
+    Username is required
+  </div>
+
+  <label>Password:</label>
+  <input type="password" formControlName="Password" />
+  <div *ngIf="loginFormvalidation.get('Password')?.errors?.['minlength'] && loginFormvalidation.get('Password')?.touched">
+    Password must be at least 6 characters
+  </div>
+
+  <button type="submit" [disabled]="loginFormvalidation.invalid">Login</button>
+</form>
+
+</div>
+
