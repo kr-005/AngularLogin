@@ -39,7 +39,6 @@ export class Api {
     });}
 
   Login(data: any): Observable<any> {
-    alert(`${environment.apiUrl}/login/login`);
     return this.http.post(`${environment.apiUrl}/login/login`, data);
   }
 }
