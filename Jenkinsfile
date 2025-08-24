@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-  tools { nodejs 'node20' } // Manage Jenkins → Tools → NodeJS installations
+    tools { nodejs 'node20' } // Manage Jenkins → Tools → NodeJS installations
 
   options {
     timestamps()
@@ -15,6 +15,7 @@ pipeline {
   }
 
   stages {
+    stage('Check SCM'){
      steps {
         checkout([$class: 'GitSCM',
           branches: [[name: '*/master']],                     // branch
@@ -25,6 +26,7 @@ pipeline {
           ]]
         ])
       }
+    }
 
     stage('Install deps') {
       steps {
