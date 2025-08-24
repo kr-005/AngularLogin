@@ -58,7 +58,6 @@ constructor(private router: Router, public APIURL: Api,private fb: FormBuilder) 
 this.APIURL.Login({ Username: this.Username, Password: this.Password }).subscribe(
       (response) => {
         var Result=JSON.stringify(response);
-        alert(Result)
          if (response && response.welcomeMsg?.toLowerCase().includes('welcome')) {
           this.router.navigate(['/user-creation'], { queryParams: { username: response.user } });
         } else {
