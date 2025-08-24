@@ -18,7 +18,7 @@ pipeline {
   stages {
      steps {
         checkout([$class: 'GitSCM',
-          branches: [[name: '*/main']],                     // branch
+          branches: [[name: '*/master']],                     // branch
           gitTool: 'Default',                                 // Jenkies option
           userRemoteConfigs: [[
             url: 'https://github.com/kr-005/AngularLogin.git', //git repo path
