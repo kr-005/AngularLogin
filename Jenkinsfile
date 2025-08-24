@@ -1,7 +1,7 @@
 pipeline {
   agent any
 
-    tools { nodejs 'node20' } // Manage Jenkins → Tools → NodeJS installations
+   // tools { nodejs 'node20' } // Manage Jenkins → Tools → NodeJS installations
 
   options {
     timestamps()
